@@ -1,0 +1,80 @@
+version: '3.9'
+services:
+  service:
+    container_name: 'shortener_service'
+    restart: on-failure
+    build:
+      context: ./service
+    ports:
+      - "5000:${APP_PORT}"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - url-shortener
+    env_file:
+      - .env
+    environment:
+      - APP_PORT=${APP_PORT}
+      - APP_TIMEZONE=${APP_TIMEZONE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=mysql
+      - DB_PORT=${DB_PORT}
+      - DB_DATABASE=${DB_DATABASE}
+      - REDIS_HOST=redis
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=${REDIS_PORT}
+
+  mysql:
+    container_name: 'mysql8'
+    image: mysql:8.1
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    networks:
+      - url-shortener
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      start_period: 30s
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    volumes:
+      - './docker/mysql/data:/var/lib/mysql'
+      - './docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf'
+      - './docker/mysql/initdb:/docker-entrypoint-initdb.d'
+
+  redis:
+    container_name: 'redis7'
+    image: redis:7.2-alpine
+    command: redis-server
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - './docker/redis/data:/data'
+      - './docker/redis/redis:/var/lib/redis'
+      - './docker/redis/redis.conf:/usr/local/etc/redis/redis.conf'
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
+    networks:
+      - url-shortener
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 25
+
+networks:
+  url-shortener:
+    driver: bridge
