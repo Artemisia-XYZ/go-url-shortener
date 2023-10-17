@@ -8,7 +8,7 @@ require (
 	github.com/bytedance/sonic v1.10.2
 	github.com/go-playground/validator/v10 v10.15.5
 	github.com/gobeam/stringy v0.0.6
-	github.com/gofiber/fiber/v2 v2.49.2
+	github.com/gofiber/fiber/v2 v2.50.0
 	github.com/google/uuid v1.3.1
 	github.com/redis/go-redis/v9 v9.2.1
 	github.com/stretchr/testify v1.8.4
@@ -44,7 +44,7 @@ require (
 	github.com/tinylib/msgp v1.1.8 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.49.0 // indirect
+	github.com/valyala/fasthttp v1.50.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/yuin/gopher-lua v1.1.0 // indirect
 	go.uber.org/multierr v1.10.0 // indirect
