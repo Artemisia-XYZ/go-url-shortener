@@ -8,8 +8,8 @@ require (
 	github.com/bytedance/sonic v1.10.2
 	github.com/go-playground/validator/v10 v10.15.5
 	github.com/gobeam/stringy v0.0.6
-	github.com/gofiber/fiber/v2 v2.50.0
-	github.com/google/uuid v1.3.1
+	github.com/gofiber/fiber/v2 v2.52.1
+	github.com/google/uuid v1.5.0
 	github.com/redis/go-redis/v9 v9.2.1
 	github.com/stretchr/testify v1.8.4
 	go.uber.org/mock v0.3.0
@@ -32,11 +32,11 @@ require (
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
-	github.com/klauspost/compress v1.16.7 // indirect
+	github.com/klauspost/compress v1.17.0 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.9 // indirect
 	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/mattn/go-isatty v0.0.19 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/philhofer/fwd v1.1.2 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
@@ -44,7 +44,7 @@ require (
 	github.com/tinylib/msgp v1.1.8 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.50.0 // indirect
+	github.com/valyala/fasthttp v1.51.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/yuin/gopher-lua v1.1.0 // indirect
 	go.uber.org/multierr v1.10.0 // indirect
